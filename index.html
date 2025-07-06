@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>V-Insight | Search</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+   <!-- <link href="https://cdn.tailwindcss.com" rel="stylesheet" /> -->
+ <style>
+  .sidebar-link {
+  position: relative;
+  height: 5vh;
+  width: 100%;
+   
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  font-weight: 500;
+  color: white; /* Gray-800 */
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #38bdf8; /* sky-400 */
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: top;
+}
+
+.sidebar-link:hover {
+  background-color: #cbd5e1; /* tailwind slate-300 */
+  color: #0f172a; /* slate-900 */
+  padding-left: 1.5rem;
+}
+
+.sidebar-link:hover::before {
+  transform: scaleY(1);
+}
+.sidebar-link.active {
+  background-color: #cbd5e1; /* hover background */
+  color: #0f172a; /* hover text color */
+  padding-left: 1.5rem;
+}
+
+.sidebar-link.active::before {
+  transform: scaleY(1);
+}
+
+
+ </style> 
+</head>
+<body class=" text-white font-sans" style="background-color: #778da9;">
+
+
+  <!-- Fixed Sidebar -->
+  <aside class="fixed top-0 left-0 h-full w-64 bg-[#1b263b] p-6 flex flex-col space-y-6 ">
+    <nav class="flex flex-col space-y-4 text-[1vw]">
+      <h1 class="test-white text-lg">Hii User</h1>
+      <a href="#" class="sidebar-link ">Home</a>
+<a href="challan.html" class="sidebar-link ">Challan</a>
+<a href="accident.html" class="sidebar-link">Accident</a>
+<a href="reports.html" class="sidebar-link ">Reports</a>
+
+      <a href="#" class="sidebar-link">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area with left margin -->
+  <div class="ml-64 flex flex-col min-h-screen relative bg-cover bg-center bg-centerg-center" style="background-image: url('bgimage.png');"> 
+
+  <!-- Absolute positioned div -->
+  <!-- <div class="absolute top-4 right-4 bg-black bg-opacity-50 text-white  rounded shadow">
+    
+    <button class="mt-2 text-xs hover:text-gray-300 px-4 py-2 rounded  text-white bg-gray-900 text-">Login</button>
+
+  </div> -->
+
+  <!-- Navbar -->
+  <header class="py-4   bg-opacity-80">
+    <h1 class="text-center text-2xl font-bold text-white">V-Insight</h1>
+  </header>
+
+  <!-- Centered Search Section -->
+  <main class="flex-grow flex flex-col justify-center items-center px-4 overflow-y-auto">
+    <h2 class="text-[3vw] font-bold mb-3 text-gray-900">Search Vehicle Details</h2>
+    <p class="text-gray-300 mb-6 text-lg text-center">Authority Only — View challans and accident history by number plate</p>
+
+    <form class="flex items-center gap-4 w-full max-w-xl">
+      <input 
+        type="text" 
+        name="numberPlate"
+        placeholder="Enter Vehicle Number (e.g. WB06A1234)" 
+        class="w-full bg-gray-200 px-4 py-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-gray-500" 
+        required 
+      />
+      <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-500 transition">
+        <a href="car_details.html">Search</a>
+      </button>
+    </form>
+  </main>
+
+</div>
+
+
+</body>
+</html>

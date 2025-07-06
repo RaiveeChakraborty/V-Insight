@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>V-Insight | Challan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .sidebar-link {
+      position: relative;
+      height: 5vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+      font-weight: 500;
+      color: white;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .sidebar-link::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background-color: #38bdf8;
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+      transform-origin: top;
+    }
+
+    .sidebar-link:hover {
+      background-color: #cbd5e1;
+      color: #0f172a;
+      padding-left: 1.5rem;
+    }
+
+    .sidebar-link:hover::before {
+      transform: scaleY(1);
+    }
+
+    .glass-card {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .sidebar-link.active {
+      background-color: #cbd5e1;
+      color: #0f172a;
+      padding-left: 1.5rem;
+    }
+
+    .sidebar-link.active::before {
+      transform: scaleY(1);
+    }
+  </style>
+</head>
+<body class="bg-[#778da9] text-white font-sans">
+
+  <!-- Sidebar -->
+  <aside class="fixed top-0 left-0 h-full w-64 bg-[#1b263b] p-6 flex flex-col space-y-6 shadow-2xl">
+    <nav class="flex flex-col space-y-4 text-[1vw]">
+      <h1 class="text-white text-xl font-bold">Hi, Officer</h1>
+      <a href="index.html" class="sidebar-link ">Home</a>
+      <a href="challan.html" class="sidebar-link active">Challan</a>
+      <a href="accident.html" class="sidebar-link">Accident</a>
+      <a href="reports.html" class="sidebar-link">Reports</a>
+      <a href="#" class="sidebar-link">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Dashboard Area -->
+  <main class="ml-64 min-h-screen p-10">
+
+    <!-- Add Challan Form -->
+    <div class="bg-[#1b263b] rounded-xl p-6 shadow-lg mb-10 max-w-5xl mx-auto">
+      <h2 class="text-2xl font-bold mb-6 text-center text-white">Add Challan</h2>
+      <p class="text-white mb-4 font-semibold">Officer ID: 1021</p>
+
+      <form action="/challans/add" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-white font-semibold mb-1">Challan No.</label>
+          <input type="text" id="challanNo" name="challanNo" readonly class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600" />
+        </div>
+        <div>
+          <label class="block text-white font-semibold mb-1">Number Plate</label>
+          <input type="text" name="numberPlate" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600" required />
+        </div>
+        <div>
+          <label class="block text-white font-semibold mb-1">Violation</label>
+          <input type="text" name="violation" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600" required />
+        </div>
+        <div>
+          <label class="block text-white font-semibold mb-1">Fine Amount</label>
+          <input type="number" name="fine" id="fineAmount" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600" required />
+        </div>
+        <div>
+          <label class="block text-white font-semibold mb-1">Location</label>
+          <input type="text" name="location" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600" required />
+        </div>
+        <div>
+          <label class="block text-white font-semibold mb-1">Date</label>
+          <input type="date" name="date" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600" required />
+        </div>
+        <div class="md:col-span-2 w-full flex justify-end">
+          <button type="submit" class="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700 font-semibold w-[20vw]">
+            Submit challan
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Static Challan Card -->
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl font-bold mb-4">Recent Challan View</h2>
+
+      <div class="glass-card w-full h-[34vh] bg-[#415a77] rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-[1.01] mb-6 flex">
+        <div class="w-[60%] p-5 flex flex-col justify-between text-sm space-y-2">
+          <div class="flex justify-between">
+            <p class="text-gray-300 font-semibold">Challan No.</p>
+            <p class="font-bold">CHL-123456</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-300 font-semibold">Vehicle No.</p>
+            <p class="font-bold">WB12AB3456</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-300 font-semibold">Owner</p>
+            <p class="font-medium">Ravi Das</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-300 font-semibold">Violation</p>
+            <p class="font-medium">No Helmet</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-300 font-semibold">Date & Time</p>
+            <p class="font-medium">2025-07-06 10:30 AM</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-300 font-semibold">Location</p>
+            <p class="font-medium text-right">Park Street</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-300 font-semibold">Amount</p>
+            <p class="font-bold text-green-400">₹500</p>
+          </div>
+        </div>
+        <div class="w-[40%] p-4 relative flex items-start justify-center">
+          <img src="https://i.pinimg.com/736x/3a/b8/df/3ab8dfb295c56ce9c56c347c0046d0bb.jpg" alt="Vehicle" class="w-full h-[70%] object-cover rounded-md shadow-md" />
+          <button class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 px-6 py-1 rounded-md text-white text-sm font-semibold">Paid</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function generateChallanNumber() {
+      const randomNum = Math.floor(Math.random() * 900000) + 100000;
+      return "CHL-" + randomNum;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const challanInput = document.getElementById("challanNo");
+      challanInput.value = generateChallanNumber();
+    });
+  </script>
+
+</body>
+</html>

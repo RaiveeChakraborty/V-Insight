@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>V-Insights | Reports</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style>
+  .sidebar-link {
+  position: relative;
+  height: 5vh;
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  font-weight: 500;
+  color: white; /* Gray-800 */
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #38bdf8; /* sky-400 */
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: top;
+}
+
+.sidebar-link:hover {
+  background-color: #cbd5e1; /* tailwind slate-300 */
+  color: #0f172a; /* slate-900 */
+  padding-left: 1.5rem;
+}
+
+.sidebar-link:hover::before {
+  transform: scaleY(1);
+}
+.sidebar-link.active {
+  background-color: #cbd5e1; /* hover background */
+  color: #0f172a; /* hover text color */
+  padding-left: 1.5rem;
+}
+
+.sidebar-link.active::before {
+  transform: scaleY(1);
+}
+
+ </style> 
+</head>
+<body class="bg-[#778da9] text-white font-sans">
+
+  <!-- Fixed Sidebar -->
+  <aside class="fixed top-0 left-0 h-full w-64 bg-[#1b263b] p-6 flex flex-col space-y-6">
+    <h1 class="text-white text-lg ">Hii user</h1>
+    <nav class="flex flex-col space-y-4 text-[1vw]">
+       <a href="index.html" class="sidebar-link">Home</a>
+<a href="challan.html" class="sidebar-link ">Challan</a>
+<a href="accident.html" class="sidebar-link ">Accident</a>
+<a href="reports.html" class="sidebar-link">Reports</a>
+
+      
+      <a href="#" class="sidebar-link">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="ml-64 flex flex-col min-h-screen">
+    
+
+    <!-- Main Page Content -->
+    <main class="flex-grow p-8 overflow-auto">
+      <!-- <h2 class="text-3xl font-bold mb-4">Reports & Dashboard Overview</h2> -->
+
+      <!-- Dashboard Overview & Recent Activity Row -->
+      <div class="flex flex-col md:flex-row gap-4 mb-6">
+        <!-- Dashboard Overview -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md flex-1">
+          <h3 class="text-xl font-semibold mb-4 border-b border-blue-500 pb-2">Dashboard Overview</h3>
+          <ul class="text-gray-300 space-y-2 text-base">
+            <li>Total Vehicles Registered: <span class="text-blue-400 font-bold">12,345</span></li>
+            <li>Challans Issued Today: <span class="text-blue-400 font-bold">256</span></li>
+            <li>Challans This Month: <span class="text-blue-400 font-bold">1,582</span></li>
+            <li>Recent Accidents (30 Days): <span class="text-blue-400 font-bold">12</span></li>
+          </ul>
+        </div>
+
+        <!-- Recent Activity Feed -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md flex-1">
+          <h3 class="text-xl font-semibold mb-4 border-b border-blue-500 pb-2">Recent Activity</h3>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li>✅ Challan issued to WB06A1234</li>
+            <li>⚠️ Accident reported at MG Road</li>
+            <li>🚗 New vehicle registered: WB12B5678</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Analytics Charts -->
+      <section class="grid md:grid-cols-3 gap-4">
+  <!-- Challan Analytics (Bar Chart) -->
+  <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+    <h3 class="text-xl font-semibold mb-4 border-b border-blue-500 pb-2">Challan Analytics</h3>
+    <canvas id="challanChart" style="height: 200px;"></canvas>
+  </div>
+
+  <!-- Accident Analytics (Pie Chart) -->
+  <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+    <h3 class="text-xl font-semibold mb-4 border-b border-blue-500 pb-2">Accident Analytics</h3>
+    <canvas id="accidentChart" style="height: 200px;"></canvas>
+  </div>
+
+  <!-- New Registrations Analytics (Bar Chart) -->
+  <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+    <h3 class="text-xl font-semibold mb-4 border-b border-blue-500 pb-2">New Vehicle Registrations</h3>
+    <canvas id="registrationChart" style="height: 150px;"></canvas>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Challan Analytics Bar Chart
+    const challanCtx = document.getElementById('challanChart').getContext('2d');
+    const challanChart = new Chart(challanCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Challans Issued',
+          data: [12, 19, 7, 15, 22, 17, 10],
+          backgroundColor: 'rgba(59,130,246,0.7)', // blue
+          borderColor: 'rgba(59,130,246,1)',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: 'white' },
+            grid: { color: 'rgba(255,255,255,0.1)' }
+          },
+          x: {
+            ticks: { color: 'white' },
+            grid: { color: 'rgba(255,255,255,0.1)' }
+          }
+        },
+        plugins: {
+          legend: { labels: { color: 'white' } }
+        }
+      }
+    });
+
+    // Accident Analytics Pie Chart
+    const accidentCtx = document.getElementById('accidentChart').getContext('2d');
+    const accidentChart = new Chart(accidentCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Minor', 'Major', 'Fatal'],
+        datasets: [{
+          label: 'Accident Severity',
+          data: [8, 3, 1],
+          backgroundColor: [
+            'rgba(59,130,246,0.8)',   // blue (instead of yellow)
+            'rgba(37,99,235,0.8)',   // darker blue (instead of red)
+            'rgba(107,114,128,0.8)'  // cool gray (instead of gray)
+          ],
+          borderColor: 'rgba(255,255,255,0.3)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { color: 'white' } }
+        }
+      }
+    });
+
+    // New Vehicle Registrations Bar Chart
+    const regCtx = document.getElementById('registrationChart').getContext('2d');
+    const registrationChart = new Chart(regCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+          label: 'New Registrations',
+          data: [20, 25, 30, 28, 40, 35, 45],
+          backgroundColor: 'rgba(59,130,246,0.7)', // blue
+          borderColor: 'rgba(59,130,246,1)',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: 'white' },
+            grid: { color: 'rgba(255,255,255,0.1)' }
+          },
+          x: {
+            ticks: { color: 'white' },
+            grid: { color: 'rgba(255,255,255,0.1)' }
+          }
+        },
+        plugins: {
+          legend: { labels: { color: 'white' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

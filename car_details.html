@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vehicle Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass-card {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+  </style>
+</head>
+
+<body class="bg-[#778da9] text-white font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="px-6 py-4 shadow-md flex items-center justify-between">
+    <h1 class="text-white text-xl font-bold">V-Insight</h1>
+    <a href="index.html" class="text-white text-sm bg-[#1b263b] hover:bg-navy-700 px-4 py-2 rounded shadow font-semibold">
+      Search Again
+    </a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="max-w-7xl mx-auto py-6 px-6 space-y-12">
+
+    <!-- VEHICLE DETAILS -->
+    <div class="glass-card bg-[#1b263b] rounded-xl shadow-xl p-8 flex flex-col lg:flex-row gap-6">
+      
+      <!-- Vehicle Info -->
+      <div class="flex-1">
+        <h2 class="text-3xl font-bold mb-6 text-center lg:text-left">Vehicle Information</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <p><span class="font-semibold text-gray-300">Number Plate:</span> WB12AB3456</p>
+          <p><span class="font-semibold text-gray-300">Owner:</span> Ravi Das</p>
+          <p><span class="font-semibold text-gray-300">Phone:</span> 9876543210</p>
+          <p><span class="font-semibold text-gray-300">Address:</span> 123 Park Street, Kolkata</p>
+          <p><span class="font-semibold text-gray-300">Type:</span> Sedan</p>
+          <p><span class="font-semibold text-gray-300">Make:</span> Maruti Suzuki</p>
+          <p><span class="font-semibold text-gray-300">Model:</span> Dzire</p>
+          <p><span class="font-semibold text-gray-300">Year:</span> 2020</p>
+          <p><span class="font-semibold text-gray-300">Color:</span> White</p>
+          <p><span class="font-semibold text-gray-300">Fuel:</span> Petrol</p>
+          <p><span class="font-semibold text-gray-300">Engine No:</span> ENG1234567890</p>
+          <p><span class="font-semibold text-gray-300">Chassis No:</span> CHS9876543210</p>
+          <p><span class="font-semibold text-gray-300">Registered:</span> Mon Jul 06 2020</p>
+          <p><span class="font-semibold text-gray-300">Insurance Till:</span> Tue Jul 06 2026</p>
+          <p><span class="font-semibold text-gray-300">PUCC Till:</span> Sun Jul 06 2025</p>
+        </div>
+      </div>
+
+      <!-- Static Car Image -->
+      <div class="w-full lg:w-[35%] flex justify-center items-center">
+        <img 
+          src="https://i.pinimg.com/736x/67/d8/0f/67d80fcc7b44b8b40768dcbdb043e733.jpg" 
+          alt="Car"
+          class="w-full max-h-[350px] rounded-lg shadow-lg object-contain"
+        />
+      </div>
+    </div>
+
+    <!-- CHALLAN & ACCIDENT INFO -->
+    <div class="flex flex-col lg:flex-row gap-10">
+
+      <!-- CHALLANS -->
+      <div class="flex-1">
+        <div class="glass-card bg-[#1b263b] rounded-xl shadow p-6">
+          <h3 class="text-2xl font-semibold mb-4 text-center">Challan History</h3>
+          <div class="space-y-6">
+            <div class="bg-[#1b263b] border border-gray-600 rounded-xl p-4 hover:scale-[1.01] transition-transform">
+              <p><strong>Date:</strong> Mon Jul 01 2024</p>
+              <p><strong>Violation:</strong> Signal Jumping</p>
+              <p><strong>Fine:</strong> ₹1000</p>
+              <p><strong>Location:</strong> Gariahat Crossing</p>
+            </div>
+            <div class="bg-[#1b263b] border border-gray-600 rounded-xl p-4 hover:scale-[1.01] transition-transform">
+              <p><strong>Date:</strong> Fri Jun 14 2024</p>
+              <p><strong>Violation:</strong> No Helmet</p>
+              <p><strong>Fine:</strong> ₹500</p>
+              <p><strong>Location:</strong> Rashbehari Avenue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCIDENTS -->
+      <div class="flex-1">
+        <div class="glass-card bg-[#1b263b] rounded-xl shadow p-6">
+          <h3 class="text-2xl font-semibold mb-4 text-center">Accident History</h3>
+          <div class="space-y-6">
+            <div class="bg-[#1b263b] border border-gray-600 rounded-xl p-4 hover:scale-[1.01] transition-transform">
+              <p><strong>Date:</strong> Wed May 22 2024</p>
+              <p><strong>Location:</strong> Howrah Bridge</p>
+              <p><strong>Description:</strong> Minor scratch on left side due to another vehicle.</p>
+            </div>
+            <div class="bg-[#1b263b] border border-gray-600 rounded-xl p-4 hover:scale-[1.01] transition-transform">
+              <p><strong>Date:</strong> Thu Feb 29 2024</p>
+              <p><strong>Location:</strong> New Alipore</p>
+              <p><strong>Description:</strong> Rear-ended by a bike at low speed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
